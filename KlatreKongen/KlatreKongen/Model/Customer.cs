@@ -15,7 +15,7 @@ namespace KlatreKongen.Model
         public string Email { get; set; }
         public string Qualifications { get; set; }
         public Membership Membership { get; set; }
-        public List<Entry> Checkins { get; set; }
+        public List<Entry> Entries { get; set; }
         //public List<Booking> Bookings { get; set; }
 
         // With Membership
