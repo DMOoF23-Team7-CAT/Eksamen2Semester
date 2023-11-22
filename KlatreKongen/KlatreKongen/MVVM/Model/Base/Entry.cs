@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace KlatreKongen.Model
+namespace KlatreKongen.MVVM.Model.Base
 {
     public class Entry
     {

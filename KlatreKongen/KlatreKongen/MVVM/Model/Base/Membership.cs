@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KlatreKongen.Model
+namespace KlatreKongen.MVVM.Model.Base
 {
     public class Membership
     {
