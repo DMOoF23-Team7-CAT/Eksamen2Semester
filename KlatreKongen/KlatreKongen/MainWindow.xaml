@@ -15,12 +15,14 @@
     Background="Transparent"
     WindowStyle="SingleBorderWindow"
     mc:Ignorable="d">
-
+    
+    <!--  Height and Width is set to the standard sizes for a browser window  -->
+    
     <Window.DataContext>
         <ViewModel:MainViewModel />
     </Window.DataContext>
 
-    <!--  Height and Width is set to the standard sizes for a browser window  -->
+
 
     <Border Background="#272537">
 
