@@ -12,6 +12,10 @@ namespace KlatreKongen.MVVM.Model.Base
         public string Name { get; set; }
         public double Price { get; set; }
 
+        public Pass()
+        {
+            
+        }
         public Pass(string name, double price)
         {
             Name = name;

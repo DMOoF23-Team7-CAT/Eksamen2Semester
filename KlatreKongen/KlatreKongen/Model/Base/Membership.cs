@@ -12,15 +12,24 @@ namespace KlatreKongen.MVVM.Model.Base
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public bool Active { get; set; }
-        public double Discount { get; set; }
-        public string Benefits { get; set; }
-        public Customer Customer { get; set; }
+        public double? Discount { get; set; }
+        public string? Benefits { get; set; }
+        public int CustomerId { get; set; }
 
-        public Membership(DateTime startDate, DateTime endDate, Customer customer)
+
+        // Base Constructor
+        public Membership()
+        {
+            
+        }
+        public Membership(DateTime startDate, DateTime endDate, int customerId)
         {
             StartDate = startDate;
             EndDate = endDate;
-            Customer = customer;
+            CustomerId = customerId;
+            Active = true;
+
         }
+
     }
 }

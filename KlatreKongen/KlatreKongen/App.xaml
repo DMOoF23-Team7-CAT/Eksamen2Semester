@@ -4,13 +4,13 @@
              xmlns:local="clr-namespace:KlatreKongen"
              xmlns:ViewModel="clr-namespace:KlatreKongen.MVVM.ViewModel"
              xmlns:View="clr-namespace:KlatreKongen.MVVM.View"
-             StartupUri="MainWindow.xaml">
+             StartupUri="View\MainWindow.xaml">
     
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
 
-                <ResourceDictionary Source="Themes/MenuButtonTheme.xaml" />
+                <ResourceDictionary Source="View/Themes/MenuButtonTheme.xaml" />
                 
             </ResourceDictionary.MergedDictionaries>
 
