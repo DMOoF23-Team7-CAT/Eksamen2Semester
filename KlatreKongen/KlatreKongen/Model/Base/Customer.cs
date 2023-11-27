@@ -11,12 +11,18 @@ namespace KlatreKongen.MVVM.Model.Base
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Email { get; set; }
-        public string Qualifications { get; set; }
-        public Membership Membership { get; set; }
-        public List<Entry> Entries { get; set; }
-        //public List<Booking> Bookings { get; set; }
+        public string? PhoneNumber { get; set; }
+        public string? Email { get; set; }
+        public string? Qualifications { get; set; }
+        public Membership? Membership { get; set; }
+        public List<Entry>? Entries { get; set; }
+
+        // Base constructor
+        public Customer(string name, DateTime dateOfBirth)
+        {
+            Name = name;
+            DateOfBirth = dateOfBirth;
+        }
 
         // With Membership
         public Customer(string name, DateTime dateOfBirth,
