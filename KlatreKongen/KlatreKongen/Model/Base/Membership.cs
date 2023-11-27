@@ -18,6 +18,10 @@ namespace KlatreKongen.MVVM.Model.Base
 
 
         // Base Constructor
+        public Membership()
+        {
+            
+        }
         public Membership(DateTime startDate, DateTime endDate, int customerId)
         {
             StartDate = startDate;

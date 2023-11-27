@@ -15,6 +15,10 @@ namespace KlatreKongen.MVVM.Model.Base
         public List<Pass>? Passes { get; set; }
 
         // Base constructor
+        public Entry()
+        {
+        }
+
         public Entry(DateTime checkinTime, double price)
         {
             CheckinTime = checkinTime;
