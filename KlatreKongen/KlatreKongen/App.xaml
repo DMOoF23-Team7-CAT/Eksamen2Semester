@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:KlatreKongen"
              xmlns:ViewModel="clr-namespace:KlatreKongen.MVVM.ViewModel"
              xmlns:View="clr-namespace:KlatreKongen.MVVM.View"
-             StartupUri="View\MainWindow.xaml">
+             StartupUri="MainWindow.xaml">
     
     <Application.Resources>
         <ResourceDictionary>
