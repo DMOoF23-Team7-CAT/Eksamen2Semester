@@ -1,15 +1,15 @@
-﻿    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.Data;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Windows.Controls;
-    using KlatreKongen.MVVM.Model.Base;
-    using KlatreKongen.MVVM.Model.Interfaces;
-    using Microsoft.Data.SqlClient;
-    using Microsoft.Extensions.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Controls;
+using KlatreKongen.MVVM.Model.Base;
+using KlatreKongen.MVVM.Model.Interfaces;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace KlatreKongen.MVVM.Model.Repositories
 {
@@ -105,7 +105,7 @@ namespace KlatreKongen.MVVM.Model.Repositories
                     Phone = row["Phone"].ToString(),
                     Email = row["Email"].ToString(),
                     Qualifications = row["Qualifications"].ToString(),
-                    HasSignedDisclaimer = Convert.ToBoolean(row["HasSignedDisclaimer"]),
+                    HasSignedDisclaimer = Convert.ToBoolean(row["HasSignedDisclaimer"]),              
                 };
 
                 CustomerList.Add(customer);
@@ -133,10 +133,10 @@ namespace KlatreKongen.MVVM.Model.Repositories
                 {
                     CustomerList.Remove(customerToRemove);
                 }
-                
+
             }
             catch (Exception ex)
-            { 
+            {
                 throw new Exception($"Customer with id: {customerId} could not be found and removed \n\n{ex.Message}");
             }
         }
