@@ -5,10 +5,15 @@
     xmlns:ViewModel="clr-namespace:KlatreKongen.MVVM.ViewModel"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:KlatreKongen.MVVM.View"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
     d:DesignHeight="704"
     d:DesignWidth="1346"
     mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </UserControl.Resources>
 
     <UserControl.DataContext>
         <ViewModel:OverviewViewModel />
@@ -21,26 +26,296 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0">
-            <Border
+        <!--#region Customer details section-->
+        <Border
+                Grid.Column="0"
                 Margin="20"
                 Background="LightGray"
-                CornerRadius="20" />
-        </Grid>
+                CornerRadius="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*" MinHeight="50"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
 
-        <Grid Grid.Column="1">
-            <Border
+                <!-- Page Title -->
+                <TextBlock Grid.Row="0" Text="Kundedetaljer" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 20" 
+                   HorizontalAlignment="Center" Foreground="#121518"/>
+
+                <!-- First Name -->
+                <Grid Grid.Row="1">
+                    <TextBlock Text="Fornavn:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
+                               Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
+                                   Panel.ZIndex="1" Text="Indtast fornavn . . ."
+                                   Visibility="{Binding ElementName=tb_TxtFirstName,Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
+
+                        <TextBox x:Name="tb_TxtFirstName" Style="{StaticResource tb_TextBoxInput}"/>
+                    </Grid>
+                </Grid>
+
+                <!-- Last Name -->
+                <Grid Grid.Row="2">
+                    <TextBlock Text="Efternavn:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
+               Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
+                   Panel.ZIndex="1" Text="Indtast efternavn . . ."
+                   Visibility="{Binding ElementName=tb_TxtLastName,Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
+
+                        <TextBox x:Name="tb_TxtLastName" Style="{StaticResource tb_TextBoxInput}"/>
+                    </Grid>
+                </Grid>
+
+                <!-- Birthday -->
+                <Grid Grid.Row="3">
+                    <TextBlock Text="Fødselsdato:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
+               Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
+                   Panel.ZIndex="1" Text="dd/mm/åååå"
+                   Visibility="{Binding ElementName=tb_TxtBirthday,Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
+
+                        <TextBox x:Name="tb_TxtBirthday" Style="{StaticResource tb_TextBoxInput}"/>
+                    </Grid>
+                </Grid>
+
+                <!-- Phone -->
+                <Grid Grid.Row="4">
+                    <TextBlock Text="Telefonnummer:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
+               Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
+                   Panel.ZIndex="1" Text="+45 12 34 56 78"
+                   Visibility="{Binding ElementName=tb_TxtPhone,Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
+
+                        <TextBox x:Name="tb_TxtPhone" Style="{StaticResource tb_TextBoxInput}"/>
+                    </Grid>
+                </Grid>
+
+                <!-- Email -->
+                <Grid Grid.Row="5">
+                    <TextBlock Text="Email:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
+               Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
+                   Panel.ZIndex="1" Text="mail@mail.com"
+                   Visibility="{Binding ElementName=tb_TxtMail,Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
+
+                        <TextBox x:Name="tb_TxtMail" Style="{StaticResource tb_TextBoxInput}"/>
+                    </Grid>
+                </Grid>
+
+                <!-- Disclaimer -->
+                <Grid Grid.Row="6" Margin="0 20 0 5">
+                    <TextBlock Text="Fraskrivningserklæring:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
+               Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <CheckBox HorizontalAlignment="Center">
+                        </CheckBox>
+                    </Grid>
+                </Grid>
+
+                <!--Seperator-->
+                <Separator Height="1" Grid.Row="7" Background="Gray" Margin="25 15 25 10" VerticalAlignment="Top"/>
+
+                <!-- Qualifications -->
+                <Grid Grid.Row="7">
+                    <TextBlock Text="Kvalifikationer:" FontSize="18" FontWeight="SemiBold"
+               Foreground="#121518" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+                </Grid>
+
+                <!-- Lead Qual -->
+                <Grid Grid.Row="8" Margin="0 20 0 10">
+                    <TextBlock Text="Lead sikret:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
+               Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <CheckBox HorizontalAlignment="Center">
+                        </CheckBox>
+                    </Grid>
+                </Grid>
+
+                <!-- Top Qual -->
+                <Grid Grid.Row="9" Margin="0 20 0 50">
+                    <TextBlock Text="Top-reb:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
+               Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <CheckBox HorizontalAlignment="Center">
+                        </CheckBox>
+                    </Grid>
+                </Grid>
+
+
+
+
+            </Grid>
+        </Border>
+        <!--#endregion-->
+
+        <!--#region Customer membership section-->
+        <Border
+                Grid.Column="1"
                 Margin="20"
                 Background="DarkGray"
-                CornerRadius="20" />
-        </Grid>
+                CornerRadius="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
 
-        <Grid Grid.Column="2">
-            <Border
+                <!-- Page Title -->
+                <TextBlock Grid.Row="0" Text="Medlemskab" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 20" 
+                  HorizontalAlignment="Center" Foreground="#121518"/>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="20*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Memberships -->
+                    <StackPanel Grid.Row="1" Grid.Column="1">
+
+                        <!-- Year membership -->
+                        <Border Height="130" Margin="0 0 0 25" MouseLeftButtonDown="BorderYear_MouseLeftButtonDown" CornerRadius="15">
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="Årskort" HorizontalAlignment="Center" FontSize="25" FontWeight="SemiBold"/>
+                                <TextBlock Text="4.000,-" HorizontalAlignment="Center" FontWeight="SemiBold"/>
+                            </StackPanel>
+
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                                    <GradientStop Color="#FFFF00" Offset="0.0"/>
+                                    <GradientStop Color="#FFA500" Offset="1.2"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                        </Border>
+
+                        <!-- Quater membership -->
+                        <Border Height="130" Margin="0 0 0 25" MouseLeftButtonDown="BorderQuarter_MouseLeftButtonDown" CornerRadius="15">
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="Kvartalskort" HorizontalAlignment="Center" FontSize="25" FontWeight="SemiBold"/>
+                                <TextBlock Text="1.200,-" HorizontalAlignment="Center" FontWeight="SemiBold"/>
+                            </StackPanel>
+
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                                    <GradientStop Color="#2E8B57" Offset="0.0"/>
+                                    <GradientStop Color="#ADEE2F" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+
+                        <!-- Month Membership -->
+                        <Border Height="130" Margin="0 0 0 30" MouseLeftButtonDown="BorderMonth_MouseLeftButtonDown" CornerRadius="15">
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="Månedskort" HorizontalAlignment="Center" FontSize="25" FontWeight="SemiBold"/>
+                                <TextBlock Text="500,-" HorizontalAlignment="Center" FontWeight="SemiBold"/>
+                            </StackPanel>
+
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                                    <GradientStop Color="#F08080" Offset="0.0"/>
+                                    <GradientStop Color="#ADEE2F" Offset="1.2"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+                <!-- Start Date -->
+                <Grid Grid.Row="2">
+                    <TextBlock Text="Start dato:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
+                              Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
+                                  Panel.ZIndex="1" Text="dd/mm/åååå"
+                                  Visibility="{Binding ElementName=tb_TxtStartDate,Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
+
+                        <TextBox x:Name="tb_TxtStartDate" Style="{StaticResource tb_TextBoxInput}"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+
+        </Border>
+        <!--#endregion-->
+
+
+        <!--#region DataTable section -->
+        <Border
+                Grid.Column="2"
                 Margin="20"
                 Background="Gray"
-                CornerRadius="20" />
-        </Grid>
+                CornerRadius="20">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Page Title -->
+                <TextBlock Grid.Row="0" Text="Personoplysninger" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 20" 
+                  HorizontalAlignment="Center" Foreground="#121518"/>
+
+                <!-- DataTable with person details -->
+                <DataGrid 
+                    Grid.Row="1" MaxHeight="500" MaxWidth="800" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible"
+                    x:Name="datagrid" BorderBrush="gray" HorizontalAlignment="Center" VerticalAlignment="Top" Padding="0 30 10 0">
+                </DataGrid>
+
+
+
+
+                <!-- Page SubTitle -->
+                <TextBlock Grid.Row="2" Text="Medlemsoplysninger" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 20" 
+                  HorizontalAlignment="Center" Foreground="#121518"/>
+
+                <!-- DataTable with membership details -->
+
+
+
+
+
+                <!-- Add Member Button -->
+                <Button Grid.Row="4" Style="{StaticResource bt_AddButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="AccountPlusOutline" Style="{StaticResource ic_MenuButtonIcon}"/>
+                        <TextBlock Text="Tilknyt medlemskab"/>
+                    </StackPanel>
+                </Button>
+
+            </Grid>
+        </Border>
+        <!--#endregion-->
+
 
     </Grid>
 </UserControl>
