@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using KlatreKongen.MVVM.ViewModel;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -23,56 +24,110 @@ namespace KlatreKongen.MVVM.View
     /// <summary>
     /// Interaction logic for CustomerView.xaml
     /// </summary>
-    public partial class CustomerView : UserControl/*, INotifyPropertyChanged*/
+    public partial class CustomerView : UserControl
     {
+        private CustomerViewModel cvm = new CustomerViewModel();
         public CustomerView()
         {
+            DataContext = cvm;
             InitializeComponent();
-            //LoadGrid();
-            //IConfigurationRoot config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            LoadGrid();
         }
 
         private void BorderYear_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Border Clicked!");
+            if (bb_YearMembership.BorderThickness == new Thickness(0, 0, 4, 4))
+            {
+                bb_YearMembership.BorderThickness = new Thickness(3, 3, 3, 3);
+                bb_YearMembership.BorderBrush = new SolidColorBrush(Colors.Beige);
+
+                bb_QuaterMembership.BorderThickness = new Thickness(0, 0, 4, 4);
+                bb_QuaterMembership.BorderBrush = new SolidColorBrush(Colors.Gray);
+                (bb_QuaterMembership.BorderBrush as SolidColorBrush).Opacity = 0.2;
+
+                bb_MonthMembership.BorderThickness = new Thickness(0, 0, 4, 4);
+                bb_MonthMembership.BorderBrush = new SolidColorBrush(Colors.Gray);
+                (bb_MonthMembership.BorderBrush as SolidColorBrush).Opacity = 0.2;
+            }
+            else
+            {
+                bb_YearMembership.BorderThickness = new Thickness(0, 0, 4, 4);
+                bb_YearMembership.BorderBrush = new SolidColorBrush(Colors.Gray);
+                (bb_YearMembership.BorderBrush as SolidColorBrush).Opacity = 0.2;
+            }
         }
+
         private void BorderQuarter_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Border Clicked!");
+            if (bb_QuaterMembership.BorderThickness == new Thickness(0, 0, 4, 4))
+            {
+                bb_QuaterMembership.BorderThickness = new Thickness(3, 3, 3, 3);
+                bb_QuaterMembership.BorderBrush = new SolidColorBrush(Colors.Beige);
+
+                bb_YearMembership.BorderThickness = new Thickness(0, 0, 4, 4);
+                bb_YearMembership.BorderBrush = new SolidColorBrush(Colors.Gray);
+                (bb_YearMembership.BorderBrush as SolidColorBrush).Opacity = 0.2;
+
+                bb_MonthMembership.BorderThickness = new Thickness(0, 0, 4, 4);
+                bb_MonthMembership.BorderBrush = new SolidColorBrush(Colors.Gray);
+                (bb_MonthMembership.BorderBrush as SolidColorBrush).Opacity = 0.2;
+            }
+            else
+            {
+                bb_QuaterMembership.BorderThickness = new Thickness(0, 0, 4, 4);
+                bb_QuaterMembership.BorderBrush = new SolidColorBrush(Colors.Gray);
+                (bb_QuaterMembership.BorderBrush as SolidColorBrush).Opacity = 0.2;
+            }
         }
 
         private void BorderMonth_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Border Clicked!");
+            if (bb_MonthMembership.BorderThickness == new Thickness(0, 0, 4, 4))
+            {
+                bb_MonthMembership.BorderThickness = new Thickness(3, 3, 3, 3);
+                bb_MonthMembership.BorderBrush = new SolidColorBrush(Colors.Beige);
+
+                bb_QuaterMembership.BorderThickness = new Thickness(0, 0, 4, 4);
+                bb_QuaterMembership.BorderBrush = new SolidColorBrush(Colors.Gray);
+                (bb_QuaterMembership.BorderBrush as SolidColorBrush).Opacity = 0.2;
+
+                bb_YearMembership.BorderThickness = new Thickness(0, 0, 4, 4);
+                bb_YearMembership.BorderBrush = new SolidColorBrush(Colors.Gray);
+                (bb_YearMembership.BorderBrush as SolidColorBrush).Opacity = 0.2;
+            }
+            else
+            {
+                bb_MonthMembership.BorderThickness = new Thickness(0, 0, 4, 4);
+                bb_MonthMembership.BorderBrush = new SolidColorBrush(Colors.Gray);
+                (bb_MonthMembership.BorderBrush as SolidColorBrush).Opacity = 0.2;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Button Clicked!");
         }
 
 
-
-        //public event PropertyChangedEventHandler? PropertyChanged;
-
-        //private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
-
-        //public async Task LoadGrid()
-        //{
-        //    IConfigurationRoot config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-        //    string? ConnectionString = config.GetConnectionString("MyDBConnection");
+        //-----------------------------------------------------------------------TEST-----------------------------------------------------------------------------
+        public async Task LoadGrid()
+        {
+            IConfigurationRoot config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            string? ConnectionString = config.GetConnectionString("MyDBConnection");
 
 
-        //    DataTable dt = new DataTable();
-        //    using (SqlConnection con = new SqlConnection(ConnectionString))
-        //    {
-        //        SqlCommand cmd = new SqlCommand("select * from Customer", con);
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                SqlCommand cmd = new SqlCommand("select * from Membership", con);
 
-        //        con.Open();
+                con.Open();
 
-        //        SqlDataReader sdr = cmd.ExecuteReader();
-        //        await Task.Run(() => dt.Load(sdr));
-        //    }
-        //    datagrid.ItemsSource = dt.DefaultView;
+                SqlDataReader sdr = cmd.ExecuteReader();
+                await Task.Run(() => dt.Load(sdr));
+            }
+            dg_CustomerInputSummary.ItemsSource = dt.DefaultView;
 
-        //}
+        }
     }
 }
