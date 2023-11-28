@@ -16,6 +16,14 @@ namespace KlatreKongen.MVVM.Model.Repositories
     public class CustomerRepository : ICustomerRepository
     {
         private readonly string _connectionString;
+        private DataTable customersWithData;
+
+        public DataTable CustomersWithData
+        {
+            get { return customersWithData; }
+            set { customersWithData = value; }
+        }
+
 
         public ObservableCollection<Customer> CustomerList;
 
@@ -57,7 +65,37 @@ namespace KlatreKongen.MVVM.Model.Repositories
             {
                 throw new Exception($"Error retrieving customers: {ex.Message}");
             }
+        }
 
+        public DataTable LoadDataTable()
+        {
+            
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    con.Open();
+
+                    using (SqlCommand cmd = new SqlCommand("spCustomersWithData", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            using (DataTable dataTable = new DataTable())
+                            {
+                                adapter.Fill(dataTable);
+
+                                return dataTable;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error retrieving customers: {ex.Message}");
+            }
         }
 
         private ObservableCollection<Customer> ConvertDataTableToCustomerList(DataTable dataTable)
