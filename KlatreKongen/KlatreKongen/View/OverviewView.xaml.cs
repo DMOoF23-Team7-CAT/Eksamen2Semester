@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KlatreKongen.MVVM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,21 @@ namespace KlatreKongen.MVVM.View
     /// </summary>
     public partial class OverviewView : UserControl
     {
+        private OverviewViewModel ovm = new OverviewViewModel ();
         public OverviewView()
         {
+            DataContext= ovm;
             InitializeComponent();
+        }
+
+        private void bt_Update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void bt_Delete_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
