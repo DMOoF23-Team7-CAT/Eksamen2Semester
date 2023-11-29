@@ -38,7 +38,7 @@
         <StackPanel
             x:Name="sp_CheckIn"
             Grid.Column="2"
-            Margin="20">
+            Margin="0,20">
 
             <Button
                 x:Name="bt_CheckIn"
@@ -49,12 +49,32 @@
             <TextBox
                 x:Name="tb_CheckIn"
                 Height="30"
-                Margin="20" />
+                Margin="20" 
+                Width="400"
+                HorizontalAlignment="Left" VerticalAlignment="Top" 
+                TextChanged="TextBox_TextChanged"/>
 
-            <ListView
-                x:Name="lv_CheckIn"
+            <DataGrid
+                x:Name="dg_CheckIn"
+                ItemsSource="{Binding CustomerMembershipTable}"
                 Height="550"
-                Margin="20,0" />
+                Width="422"
+                IsTextSearchEnabled="True"
+                AutoGenerateColumns="False"
+                HorizontalScrollBarVisibility="Hidden"
+                VerticalScrollBarVisibility="Auto">
+                
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding CustomerId}"  Width="30"/>
+                    <DataGridTextColumn Header="Navn" Binding="{Binding CustomerName}" Width="100"/>
+                    <DataGridTextColumn Header="Fødselsdag" Binding="{Binding DateOfBirth, StringFormat=dd/MM/yyyy}" />
+                    <DataGridTextColumn Header="Start Dato" Binding="{Binding MembershipStartDate, StringFormat=dd/MM/yyyy}" />
+                    <DataGridTextColumn Header="Slut Dato" Binding="{Binding MembershipEndDate, StringFormat=dd/MM/yyyy}" />
+                    <DataGridTextColumn Header="Medlemskab" Binding="{Binding MembershipType}" />
+                </DataGrid.Columns>
+                
+            </DataGrid>
+            
         </StackPanel>
 
     </Grid>

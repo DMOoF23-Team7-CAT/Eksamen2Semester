@@ -95,6 +95,7 @@
                             Text="Indtast fornavn . . ."
                             Visibility="{Binding ElementName=tb_TxtFirstName, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
 
+
                         <TextBox x:Name="tb_TxtFirstName" Style="{StaticResource tb_TextBoxInput}" />
                     </Grid>
                 </Grid>
