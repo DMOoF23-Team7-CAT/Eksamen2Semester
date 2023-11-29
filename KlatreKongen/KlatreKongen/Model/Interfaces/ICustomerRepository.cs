@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,5 +15,7 @@ namespace KlatreKongen.Model.Interfaces
         void InsertCustomer(Customer customer);
         void UpdateCustomer(Customer customer);
         void DeleteCustomer(int customerId);
+        DataTable GetCustomersWithData();
+        DataTable GetCustomerMemberships();
     }
 }

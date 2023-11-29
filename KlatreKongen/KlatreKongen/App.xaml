@@ -14,6 +14,7 @@
                 <ResourceDictionary Source="View/Themes/MenuButtonTheme.xaml" />
                 <ResourceDictionary Source="View/Themes/CustomerViewTheme.xaml" />
                 <ResourceDictionary Source="View/Themes/OverviewViewTheme.xaml" />
+                <ResourceDictionary Source="View/Themes/GenericThemes.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
 

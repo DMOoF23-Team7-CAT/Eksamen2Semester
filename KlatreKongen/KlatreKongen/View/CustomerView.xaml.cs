@@ -26,9 +26,10 @@ namespace KlatreKongen.View
     /// </summary>
     public partial class CustomerView : UserControl
     {
-        private CustomerViewModel cvm = new CustomerViewModel();
+        private CustomerViewModel customerVM;
         public CustomerView()
         {
+            customerVM = new CustomerViewModel();
             InitializeComponent();
             LoadGrid();
         }

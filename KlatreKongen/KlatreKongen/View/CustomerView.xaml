@@ -29,22 +29,8 @@
         <!--#region Customer details section-->
         <Border
             Grid.Column="0"
-            Margin="20"
-            BorderThickness="1"
-            CornerRadius="20">
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Offset="0" Color="#426AD8" />
-                    <GradientStop Offset="0.75" Color="#DA34AE" />
-                    <GradientStop Offset="1" Color="#8A16C1" />
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Offset="0" Color="#060531" />
-                    <GradientStop Offset="0.75" Color="#1B1448" />
-                </LinearGradientBrush>
-            </Border.Background>
+            Style="{StaticResource BorderGradientStyle}">
+            
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -307,22 +293,7 @@
         <!--#region Customer membership section-->
         <Border
             Grid.Column="1"
-            Margin="20"
-            BorderThickness="1"
-            CornerRadius="20">
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Offset="0" Color="#426AD8" />
-                    <GradientStop Offset="0.75" Color="#DA34AE" />
-                    <GradientStop Offset="1" Color="#8A16C1" />
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Offset="0" Color="#060531" />
-                    <GradientStop Offset="0.75" Color="#1B1448" />
-                </LinearGradientBrush>
-            </Border.Background>
+            Style="{StaticResource BorderGradientStyle}">
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -497,22 +468,8 @@
         <!--#region DataTable section-->
         <Border
             Grid.Column="2"
-            Margin="20"
-            BorderThickness="1"
-            CornerRadius="20">
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Offset="0" Color="#426AD8" />
-                    <GradientStop Offset="0.75" Color="#DA34AE" />
-                    <GradientStop Offset="1" Color="#8A16C1" />
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Offset="0" Color="#060531" />
-                    <GradientStop Offset="0.75" Color="#1B1448" />
-                </LinearGradientBrush>
-            </Border.Background>
+            Style="{StaticResource BorderGradientStyle}">
+            
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />

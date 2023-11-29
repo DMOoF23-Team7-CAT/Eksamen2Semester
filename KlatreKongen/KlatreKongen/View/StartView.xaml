@@ -21,61 +21,61 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0">
-            <Border
-                Margin="20"
-                Background="LightGray"
-                CornerRadius="20" />
-        </Grid>
+        <Border Grid.Column="0" Style="{StaticResource BorderGradientStyle}" />
 
-        <Grid Grid.Column="1">
-            <Border
-                Margin="20"
-                Background="Gray"
-                CornerRadius="20" />
-        </Grid>
+        <Border Grid.Column="1" Style="{StaticResource BorderGradientStyle}" />
 
-        <StackPanel
-            x:Name="sp_CheckIn"
-            Grid.Column="2"
-            Margin="0,20">
+        <Border Grid.Column="2" Style="{StaticResource BorderGradientStyle}">
 
-            <Button
-                x:Name="bt_CheckIn"
-                Width="250"
-                Height="40"
-                Content="Checkind" />
+            <StackPanel
+                x:Name="sp_CheckIn"
+                Grid.Column="2"
+                Margin="0,20">
 
-            <TextBox
-                x:Name="tb_CheckIn"
-                Height="30"
-                Margin="20" 
-                Width="400"
-                HorizontalAlignment="Left" VerticalAlignment="Top" 
-                TextChanged="TextBox_TextChanged"/>
+                <Button
+                    x:Name="bt_CheckIn"
+                    Width="250"
+                    Height="40"
+                    Content="Checkind" />
 
-            <DataGrid
-                x:Name="dg_CheckIn"
-                ItemsSource="{Binding CustomerMembershipTable}"
-                Height="550"
-                Width="422"
-                IsTextSearchEnabled="True"
-                AutoGenerateColumns="False"
-                HorizontalScrollBarVisibility="Hidden"
-                VerticalScrollBarVisibility="Auto">
-                
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" Binding="{Binding CustomerId}"  Width="30"/>
-                    <DataGridTextColumn Header="Navn" Binding="{Binding CustomerName}" Width="100"/>
-                    <DataGridTextColumn Header="Fødselsdag" Binding="{Binding DateOfBirth, StringFormat=dd/MM/yyyy}" />
-                    <DataGridTextColumn Header="Start Dato" Binding="{Binding MembershipStartDate, StringFormat=dd/MM/yyyy}" />
-                    <DataGridTextColumn Header="Slut Dato" Binding="{Binding MembershipEndDate, StringFormat=dd/MM/yyyy}" />
-                    <DataGridTextColumn Header="Medlemskab" Binding="{Binding MembershipType}" />
-                </DataGrid.Columns>
-                
-            </DataGrid>
-            
-        </StackPanel>
+                <TextBox
+                    x:Name="tb_CheckIn"
+                    Width="400"
+                    Height="30"
+                    Margin="20"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextChanged="TextBox_TextChanged" />
 
+                <DataGrid
+                    x:Name="dg_CheckIn"
+                    Width="422"
+                    Height="550"
+                    AutoGenerateColumns="False"
+                    Background="Transparent"
+                    HorizontalScrollBarVisibility="Hidden"
+                    IsTextSearchEnabled="True"
+                    ItemsSource="{Binding CustomerMembershipTable}"
+                    VerticalScrollBarVisibility="Auto">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Width="30"
+                            Binding="{Binding CustomerId}"
+                            Header="Id" />
+                        <DataGridTextColumn
+                            Width="100"
+                            Binding="{Binding CustomerName}"
+                            Header="Navn" />
+                        <DataGridTextColumn Binding="{Binding DateOfBirth, StringFormat=dd/MM/yyyy}" Header="Fødselsdag" />
+                        <DataGridTextColumn Binding="{Binding MembershipStartDate, StringFormat=dd/MM/yyyy}" Header="Start Dato" />
+                        <DataGridTextColumn Binding="{Binding MembershipEndDate, StringFormat=dd/MM/yyyy}" Header="Slut Dato" />
+                        <DataGridTextColumn Binding="{Binding MembershipType}" Header="Medlemskab" />
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>

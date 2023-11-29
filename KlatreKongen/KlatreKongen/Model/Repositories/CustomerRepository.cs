@@ -227,7 +227,7 @@ namespace KlatreKongen.Model.Repositories
             return dataTable;
         }
 
-        public DataTable LoadDataTable()
+        public DataTable GetCustomersWithData()
         {
 
             try
