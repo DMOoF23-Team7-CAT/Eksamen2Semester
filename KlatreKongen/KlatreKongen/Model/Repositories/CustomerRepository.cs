@@ -60,37 +60,6 @@ namespace KlatreKongen.Model.Repositories
 
         }
 
-        public DataTable LoadDataTable()
-        {
-
-            try
-            {
-                using (SqlConnection con = new SqlConnection(_connectionString))
-                {
-                    con.Open();
-
-                    using (SqlCommand cmd = new SqlCommand("spCustomersWithData", con))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-                        {
-                            using (DataTable dataTable = new DataTable())
-                            {
-                                adapter.Fill(dataTable);
-
-                                return dataTable;
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error retrieving customers: {ex.Message}");
-            }
-        }
-
         private ObservableCollection<Customer> ConvertDataTableToCustomerList(DataTable dataTable)
         {
             CustomerList = new ObservableCollection<Customer>();
@@ -181,8 +150,6 @@ namespace KlatreKongen.Model.Repositories
             }
         }
 
-
-
         public void InsertCustomer(Customer customer)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
@@ -229,6 +196,65 @@ namespace KlatreKongen.Model.Repositories
             catch (Exception ex)
             {
                 throw new Exception($"There was an error while updating Customer with id: {customer.Id}\n\n{ex.Message}");
+            }
+        }
+
+        // Datatable for startview for searching and checking in members
+        public DataTable GetCustomerMemberships()
+        {
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    con.Open();
+
+                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM vwCustomerMemberships", con))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            adapter.Fill(dataTable);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving data: {ex.Message}");
+            }
+
+            return dataTable;
+        }
+
+        public DataTable LoadDataTable()
+        {
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    con.Open();
+
+                    using (SqlCommand cmd = new SqlCommand("spCustomersWithData", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            using (DataTable dataTable = new DataTable())
+                            {
+                                adapter.Fill(dataTable);
+
+                                return dataTable;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error retrieving customers: {ex.Message}");
             }
         }
     }
