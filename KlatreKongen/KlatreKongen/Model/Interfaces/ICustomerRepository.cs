@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KlatreKongen.MVVM.Model.Base;
+using KlatreKongen.Model.Base;
 
-namespace KlatreKongen.MVVM.Model.Interfaces
+namespace KlatreKongen.Model.Interfaces
 {
     public interface ICustomerRepository
     {

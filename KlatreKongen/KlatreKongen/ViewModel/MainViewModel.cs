@@ -1,12 +1,12 @@
-﻿using KlatreKongen.Core;
-using KlatreKongen.MVVM.Model.Base;
+﻿using KlatreKongen.Model.Core;
+using KlatreKongen.Model.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KlatreKongen.MVVM.ViewModel
+namespace KlatreKongen.ViewModel
 {
     internal class MainViewModel : ObservableObject
     {

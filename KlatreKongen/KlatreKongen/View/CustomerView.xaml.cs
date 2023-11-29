@@ -1,4 +1,4 @@
-﻿using KlatreKongen.MVVM.ViewModel;
+﻿using KlatreKongen.ViewModel;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -19,7 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KlatreKongen.MVVM.View
+namespace KlatreKongen.View
 {
     /// <summary>
     /// Interaction logic for CustomerView.xaml
@@ -29,7 +29,6 @@ namespace KlatreKongen.MVVM.View
         private CustomerViewModel cvm = new CustomerViewModel();
         public CustomerView()
         {
-            DataContext = cvm;
             InitializeComponent();
             LoadGrid();
         }

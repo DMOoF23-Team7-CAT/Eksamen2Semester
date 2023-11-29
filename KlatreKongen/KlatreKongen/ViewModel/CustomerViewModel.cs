@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KlatreKongen.MVVM.ViewModel
+namespace KlatreKongen.ViewModel
 {
     internal class CustomerViewModel
     {

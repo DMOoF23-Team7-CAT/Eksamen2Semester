@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using KlatreKongen.MVVM.Model.Base;
-using KlatreKongen.MVVM.Model.Interfaces;
+using KlatreKongen.Model.Base;
+using KlatreKongen.Model.Interfaces;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 
-namespace KlatreKongen.MVVM.Model.Repositories
+namespace KlatreKongen.Model.Repositories
 {
     public class CustomerRepository : ICustomerRepository
     {

@@ -1,10 +1,10 @@
 ﻿<UserControl
-    x:Class="KlatreKongen.MVVM.View.OverviewView"
+    x:Class="KlatreKongen.View.OverviewView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:ViewModel="clr-namespace:KlatreKongen.MVVM.ViewModel"
+    xmlns:ViewModel="clr-namespace:KlatreKongen.ViewModel"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:KlatreKongen.MVVM.View"
+    xmlns:local="clr-namespace:KlatreKongen.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="704"
     d:DesignWidth="1346"
@@ -19,119 +19,258 @@
             <ColumnDefinition />
             <ColumnDefinition Width="449" />
         </Grid.ColumnDefinitions>
-        <Border Grid.Column="0" Margin="20" Background="LightGray" CornerRadius="20">            
-           <StackPanel>
-                <DataGrid x:Name="dg_Overview" HorizontalAlignment="center" ItemsSource="{Binding Customer}"/>
-           </StackPanel>            
+        <Border
+            Grid.Column="0"
+            Margin="20"
+            Background="LightGray"
+            CornerRadius="20">
+            <StackPanel>
+                <DataGrid
+                    x:Name="dg_Overview"
+                    HorizontalAlignment="center"
+                    ItemsSource="{Binding Customer}" />
+            </StackPanel>
         </Border>
-        <Border Grid.Column="1" Margin="20" CornerRadius="10"                       
+        <Border
+            Grid.Column="1"
+            Margin="20"
             BorderThickness="1"
+            CornerRadius="10"
             Opacity="0.9">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#426AD8" Offset="0"/>
-                    <GradientStop Color="#DA34AE" Offset="0.75"/>
-                    <GradientStop Color="#8A16C1" Offset="1"/>
+                    <GradientStop Offset="0" Color="#426AD8" />
+                    <GradientStop Offset="0.75" Color="#DA34AE" />
+                    <GradientStop Offset="1" Color="#8A16C1" />
                 </LinearGradientBrush>
             </Border.BorderBrush>
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="#060531" Offset="0"/>
-                    <GradientStop Color="#1B1448" Offset="0.75"/>
+                    <GradientStop Offset="0" Color="#060531" />
+                    <GradientStop Offset="0.75" Color="#1B1448" />
                 </LinearGradientBrush>
             </Border.Background>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition Height="100"/>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition Height="100" />
                 </Grid.RowDefinitions>
-                
-                <!-- Grid Row 0 -->
 
-                <StackPanel Grid.Row="0" >
+                <!--  Grid Row 0  -->
+
+                <StackPanel Grid.Row="0">
                     <DockPanel>
-                        <TextBlock Text="Kundeoplysninger" FontSize="20" Foreground="White" FontWeight="Bold" Margin="0,20,0,20" HorizontalAlignment="Center"/>
+                        <TextBlock
+                            Margin="0,20,0,20"
+                            HorizontalAlignment="Center"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            Text="Kundeoplysninger" />
                     </DockPanel>
                     <DockPanel Margin="20,0,0,3">
-                        <TextBlock Text="Navn" DockPanel.Dock="Left" FontSize="15" FontWeight="DemiBold" Foreground="White"/>
-                        <TextBox x:Name="tb_Name" BorderThickness="0,0,0,1" Width="230" Margin="0,0,30,0" Foreground="White" HorizontalAlignment="Right" CaretBrush="LightGray" FontSize="15" BorderBrush="DarkGray" Background="Transparent"/>
+                        <TextBlock
+                            DockPanel.Dock="Left"
+                            FontSize="15"
+                            FontWeight="DemiBold"
+                            Foreground="White"
+                            Text="Navn" />
+                        <TextBox
+                            x:Name="tb_Name"
+                            Width="230"
+                            Margin="0,0,30,0"
+                            HorizontalAlignment="Right"
+                            Background="Transparent"
+                            BorderBrush="DarkGray"
+                            BorderThickness="0,0,0,1"
+                            CaretBrush="LightGray"
+                            FontSize="15"
+                            Foreground="White" />
                     </DockPanel>
                     <DockPanel Margin="20,10,0,3">
-                        <TextBlock Text="Fødselsdato" DockPanel.Dock="Left" FontSize="15" FontWeight="DemiBold" Foreground="White"/>
-                        <TextBox x:Name="tb_DOB" Width="230" Margin="0,0,30,0" HorizontalAlignment="Right" Foreground="White"  BorderThickness="0,0,0,1" CaretBrush="LightGray" FontSize="15" BorderBrush="DarkGray" Background="Transparent"/>
+                        <TextBlock
+                            DockPanel.Dock="Left"
+                            FontSize="15"
+                            FontWeight="DemiBold"
+                            Foreground="White"
+                            Text="Fødselsdato" />
+                        <TextBox
+                            x:Name="tb_DOB"
+                            Width="230"
+                            Margin="0,0,30,0"
+                            HorizontalAlignment="Right"
+                            Background="Transparent"
+                            BorderBrush="DarkGray"
+                            BorderThickness="0,0,0,1"
+                            CaretBrush="LightGray"
+                            FontSize="15"
+                            Foreground="White" />
                     </DockPanel>
                     <DockPanel Margin="20,10,0,3">
-                        <TextBlock Text="Telefonnummer" DockPanel.Dock="Left" Foreground="White" FontSize="15" FontWeight="DemiBold" />
-                        <TextBox x:Name="tb_Phone" Width="230" Foreground="White" Margin="0,0,30,0" HorizontalAlignment="Right" BorderThickness="0,0,0,1" CaretBrush="LightGray" FontSize="15" BorderBrush="DarkGray" Background="Transparent"/>
+                        <TextBlock
+                            DockPanel.Dock="Left"
+                            FontSize="15"
+                            FontWeight="DemiBold"
+                            Foreground="White"
+                            Text="Telefonnummer" />
+                        <TextBox
+                            x:Name="tb_Phone"
+                            Width="230"
+                            Margin="0,0,30,0"
+                            HorizontalAlignment="Right"
+                            Background="Transparent"
+                            BorderBrush="DarkGray"
+                            BorderThickness="0,0,0,1"
+                            CaretBrush="LightGray"
+                            FontSize="15"
+                            Foreground="White" />
                     </DockPanel>
                     <DockPanel Margin="20,10,0,3">
-                        <TextBlock Text="Email" DockPanel.Dock="Left" FontSize="15" FontWeight="DemiBold" Foreground="White"/>
-                        <TextBox x:Name="tb_Email" Width="230" Margin="0,0,30,0" Foreground="White" HorizontalAlignment="Right" BorderThickness="0,0,0,1" CaretBrush="LightGray" FontSize="15" BorderBrush="DarkGray" Background="Transparent"/>
+                        <TextBlock
+                            DockPanel.Dock="Left"
+                            FontSize="15"
+                            FontWeight="DemiBold"
+                            Foreground="White"
+                            Text="Email" />
+                        <TextBox
+                            x:Name="tb_Email"
+                            Width="230"
+                            Margin="0,0,30,0"
+                            HorizontalAlignment="Right"
+                            Background="Transparent"
+                            BorderBrush="DarkGray"
+                            BorderThickness="0,0,0,1"
+                            CaretBrush="LightGray"
+                            FontSize="15"
+                            Foreground="White" />
                     </DockPanel>
                     <DockPanel Margin="20,10,0,3">
-                        <TextBlock Text="Kvalifikationer" Foreground="White" DockPanel.Dock="Left" FontSize="15" FontWeight="DemiBold"/>
-                        <TextBox x:Name="tb_Qualifications" Width="230" Foreground="White" Margin="0,0,30,0" HorizontalAlignment="Right" BorderThickness="0,0,0,1" CaretBrush="LightGray" FontSize="15" BorderBrush="DarkGray" Background="Transparent"/>
+                        <TextBlock
+                            DockPanel.Dock="Left"
+                            FontSize="15"
+                            FontWeight="DemiBold"
+                            Foreground="White"
+                            Text="Kvalifikationer" />
+                        <TextBox
+                            x:Name="tb_Qualifications"
+                            Width="230"
+                            Margin="0,0,30,0"
+                            HorizontalAlignment="Right"
+                            Background="Transparent"
+                            BorderBrush="DarkGray"
+                            BorderThickness="0,0,0,1"
+                            CaretBrush="LightGray"
+                            FontSize="15"
+                            Foreground="White" />
                     </DockPanel>
                     <DockPanel Margin="20,10,0,3">
-                        <TextBlock Text="Fraskrivningserklæring signeret?" Foreground="White" DockPanel.Dock="Left" FontSize="15" FontWeight="DemiBold"/>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,30,0">
-                            <TextBlock Text="Ja" Margin="0,0,5,0" FontSize="15" Foreground="White"/>
-                            <RadioButton x:Name="rb_Signed" Margin="0,3,5,0" IsChecked="True"/>
-                            <TextBlock Text="Nej" Margin="0,0,5,0" FontSize="15" Foreground="White" />
-                            <RadioButton  Margin="3" IsChecked="False"/>
-                        </StackPanel>                       
-                    </DockPanel>   
+                        <TextBlock
+                            DockPanel.Dock="Left"
+                            FontSize="15"
+                            FontWeight="DemiBold"
+                            Foreground="White"
+                            Text="Fraskrivningserklæring signeret?" />
+                        <StackPanel
+                            Margin="0,0,30,0"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                            <TextBlock
+                                Margin="0,0,5,0"
+                                FontSize="15"
+                                Foreground="White"
+                                Text="Ja" />
+                            <RadioButton
+                                x:Name="rb_Signed"
+                                Margin="0,3,5,0"
+                                IsChecked="True" />
+                            <TextBlock
+                                Margin="0,0,5,0"
+                                FontSize="15"
+                                Foreground="White"
+                                Text="Nej" />
+                            <RadioButton Margin="3" IsChecked="False" />
+                        </StackPanel>
+                    </DockPanel>
                 </StackPanel>
-                
-                <!-- Buttons for Update and Delete -->
 
-                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button x:Name="bt_Update" BorderThickness="0" Content="Opdater" Foreground="White"
-                            FontSize="12" FontFamily="Montserrat" FontWeight="Bold" Cursor="Hand" Margin="0,0,20,0" Click="bt_Update_Click">
+                <!--  Buttons for Update and Delete  -->
+
+                <StackPanel
+                    Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Button
+                        x:Name="bt_Update"
+                        Margin="0,0,20,0"
+                        BorderThickness="0"
+                        Click="bt_Update_Click"
+                        Content="Opdater"
+                        Cursor="Hand"
+                        FontFamily="Montserrat"
+                        FontSize="12"
+                        FontWeight="Bold"
+                        Foreground="White">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#462AD8" />
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#28AEED"/>
+                                        <Setter Property="Background" Value="#28AEED" />
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
                         </Button.Style>
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
-                                <Border Width="150" Height="40" CornerRadius="20"                                 Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"                                              HorizontalAlignment="Center"/>
+                                <Border
+                                    Width="150"
+                                    Height="40"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="20">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </Border>
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button x:Name="bt_Delete" BorderThickness="0" Content="Slet" Foreground="White"
-                            FontSize="12" FontFamily="Montserrat" FontWeight="Bold" Cursor="Hand" Margin="0,0,0,0" Click="bt_Delete_Click">
+                    <Button
+                        x:Name="bt_Delete"
+                        Margin="0,0,0,0"
+                        BorderThickness="0"
+                        Click="bt_Delete_Click"
+                        Content="Slet"
+                        Cursor="Hand"
+                        FontFamily="Montserrat"
+                        FontSize="12"
+                        FontWeight="Bold"
+                        Foreground="White">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#ffcd5c5c" />
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#ffdc143c"/>
+                                        <Setter Property="Background" Value="#ffdc143c" />
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
                         </Button.Style>
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
-                                <Border Width="150" Height="40" CornerRadius="20"                                 Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"                                              HorizontalAlignment="Center"/>
+                                <Border
+                                    Width="150"
+                                    Height="40"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="20">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </Border>
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                </StackPanel>             
-                
-            </Grid>           
-            
-        </Border>             
+                </StackPanel>
+
+            </Grid>
+
+        </Border>
 
     </Grid>
 </UserControl>

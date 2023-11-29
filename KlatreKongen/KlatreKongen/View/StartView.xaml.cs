@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KlatreKongen.MVVM.View
+namespace KlatreKongen.View
 {
     /// <summary>
     /// Interaction logic for StartPage.xaml
