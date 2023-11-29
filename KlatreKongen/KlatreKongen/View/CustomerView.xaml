@@ -1,22 +1,22 @@
 ﻿<UserControl
-    x:Class="KlatreKongen.MVVM.View.CustomerView"
+    x:Class="KlatreKongen.View.CustomerView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:ViewModel="clr-namespace:KlatreKongen.MVVM.ViewModel"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:KlatreKongen.MVVM.View"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:ViewModel="clr-namespace:KlatreKongen.ViewModel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:KlatreKongen.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="704"
     d:DesignWidth="1346"
     mc:Ignorable="d">
 
     <UserControl.Resources>
-        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </UserControl.Resources>
 
     <UserControl.DataContext>
-        <ViewModel:OverviewViewModel />
+        <ViewModel:CustomerViewModel />
     </UserControl.DataContext>
 
     <Grid>
@@ -27,150 +27,259 @@
         </Grid.ColumnDefinitions>
 
         <!--#region Customer details section-->
-        <Border Grid.Column="0" Margin="20" CornerRadius="20" BorderThickness="1">
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#426AD8" Offset="0"/>
-                    <GradientStop Color="#DA34AE" Offset="0.75"/>
-                    <GradientStop Color="#8A16C1" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="#060531" Offset="0"/>
-                    <GradientStop Color="#1B1448" Offset="0.75"/>
-                </LinearGradientBrush>
-            </Border.Background>
+        <Border
+            Grid.Column="0"
+            Style="{StaticResource BorderGradientStyle}">
+            
 
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*" MinHeight="50"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" MinHeight="50" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
 
-                <!-- Page Title -->
-                <TextBlock Grid.Row="0" Text="Kundedetaljer" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 20" 
-                   HorizontalAlignment="Center" Foreground="White"/>
+                <!--  Page Title  -->
+                <TextBlock
+                    Grid.Row="0"
+                    Margin="0,20,0,20"
+                    HorizontalAlignment="Center"
+                    FontSize="32"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    Text="Kundedetaljer" />
 
-                <!-- First Name -->
+                <!--  First Name  -->
                 <Grid Grid.Row="1">
-                    <TextBlock Text="Fornavn:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
-                               Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock
+                        Margin="25,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        Foreground="White"
+                        Text="Fornavn:" />
 
-                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
-                                   Panel.ZIndex="1" Text="Indtast fornavn . . ."
-                                   Visibility="{Binding ElementName=tb_TxtFirstName,Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
+                    <Grid
+                        Width="200"
+                        Margin="0,0,30,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                        <TextBlock
+                            Margin="15,0"
+                            VerticalAlignment="Center"
+                            Panel.ZIndex="1"
+                            Foreground="#b0b9c6"
+                            IsHitTestVisible="False"
+                            Text="Indtast fornavn . . ."
+                            Visibility="{Binding ElementName=tb_TxtFirstName, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
 
-                        <TextBox x:Name="tb_TxtFirstName" Style="{StaticResource tb_TextBoxInput}"/>
+
+                        <TextBox x:Name="tb_TxtFirstName" Style="{StaticResource tb_TextBoxInput}" />
                     </Grid>
                 </Grid>
 
-                <!-- Last Name -->
+                <!--  Last Name  -->
                 <Grid Grid.Row="2">
-                    <TextBlock Text="Efternavn:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
-               Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock
+                        Margin="25,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        Foreground="White"
+                        Text="Efternavn:" />
 
-                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
-                   Panel.ZIndex="1" Text="Indtast efternavn . . ."
-                   Visibility="{Binding ElementName=tb_TxtLastName,Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
+                    <Grid
+                        Width="200"
+                        Margin="0,0,30,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                        <TextBlock
+                            Margin="15,0"
+                            VerticalAlignment="Center"
+                            Panel.ZIndex="1"
+                            Foreground="#b0b9c6"
+                            IsHitTestVisible="False"
+                            Text="Indtast efternavn . . ."
+                            Visibility="{Binding ElementName=tb_TxtLastName, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
 
-                        <TextBox x:Name="tb_TxtLastName" Style="{StaticResource tb_TextBoxInput}"/>
+                        <TextBox x:Name="tb_TxtLastName" Style="{StaticResource tb_TextBoxInput}" />
                     </Grid>
                 </Grid>
 
-                <!-- Birthday -->
+                <!--  Birthday  -->
                 <Grid Grid.Row="3">
-                    <TextBlock Text="Fødselsdato:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
-               Foreground="#FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock
+                        Margin="25,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        Foreground="#FFFFFF"
+                        Text="Fødselsdato:" />
 
-                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
-                   Panel.ZIndex="1" Text="dd/mm/åååå"
-                   Visibility="{Binding ElementName=tb_TxtBirthday,Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
+                    <Grid
+                        Width="200"
+                        Margin="0,0,30,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                        <TextBlock
+                            Margin="15,0"
+                            VerticalAlignment="Center"
+                            Panel.ZIndex="1"
+                            Foreground="#b0b9c6"
+                            IsHitTestVisible="False"
+                            Text="dd/mm/åååå"
+                            Visibility="{Binding ElementName=tb_TxtBirthday, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
 
-                        <TextBox x:Name="tb_TxtBirthday" Style="{StaticResource tb_TextBoxInput}"/>
+                        <TextBox x:Name="tb_TxtBirthday" Style="{StaticResource tb_TextBoxInput}" />
                     </Grid>
                 </Grid>
 
-                <!-- Phone -->
+                <!--  Phone  -->
                 <Grid Grid.Row="4">
-                    <TextBlock Text="Telefonnummer:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
-               Foreground="#FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock
+                        Margin="25,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        Foreground="#FFFFFF"
+                        Text="Telefonnummer:" />
 
-                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
-                   Panel.ZIndex="1" Text="+45 12 34 56 78"
-                   Visibility="{Binding ElementName=tb_TxtPhone,Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
+                    <Grid
+                        Width="200"
+                        Margin="0,0,30,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                        <TextBlock
+                            Margin="15,0"
+                            VerticalAlignment="Center"
+                            Panel.ZIndex="1"
+                            Foreground="#b0b9c6"
+                            IsHitTestVisible="False"
+                            Text="+45 12 34 56 78"
+                            Visibility="{Binding ElementName=tb_TxtPhone, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
 
-                        <TextBox x:Name="tb_TxtPhone" Style="{StaticResource tb_TextBoxInput}"/>
+                        <TextBox x:Name="tb_TxtPhone" Style="{StaticResource tb_TextBoxInput}" />
                     </Grid>
                 </Grid>
 
-                <!-- Email -->
+                <!--  Email  -->
                 <Grid Grid.Row="5">
-                    <TextBlock Text="Email:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
-               Foreground="#FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock
+                        Margin="25,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        Foreground="#FFFFFF"
+                        Text="Email:" />
 
-                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
-                   Panel.ZIndex="1" Text="mail@mail.com"
-                   Visibility="{Binding ElementName=tb_TxtMail,Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
+                    <Grid
+                        Width="200"
+                        Margin="0,0,30,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                        <TextBlock
+                            Margin="15,0"
+                            VerticalAlignment="Center"
+                            Panel.ZIndex="1"
+                            Foreground="#b0b9c6"
+                            IsHitTestVisible="False"
+                            Text="mail@mail.com"
+                            Visibility="{Binding ElementName=tb_TxtMail, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
 
-                        <TextBox x:Name="tb_TxtMail" Style="{StaticResource tb_TextBoxInput}"/>
+                        <TextBox x:Name="tb_TxtMail" Style="{StaticResource tb_TextBoxInput}" />
                     </Grid>
                 </Grid>
 
-                <!-- Disclaimer -->
-                <Grid Grid.Row="6" Margin="0 20 0 5">
-                    <TextBlock Text="Fraskrivningserklæring:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
-               Foreground="#FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <!--  Disclaimer  -->
+                <Grid Grid.Row="6" Margin="0,20,0,5">
+                    <TextBlock
+                        Margin="25,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        Foreground="#FFFFFF"
+                        Text="Fraskrivningserklæring:" />
 
-                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <CheckBox HorizontalAlignment="Center">
-                        </CheckBox>
+                    <Grid
+                        Width="200"
+                        Margin="0,0,30,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                        <CheckBox HorizontalAlignment="Center" />
                     </Grid>
                 </Grid>
 
-                <!--Seperator-->
-                <Separator Height="1" Grid.Row="7" Background="Gray" Margin="25 15 25 10" VerticalAlignment="Top"/>
+                <!--  Seperator  -->
+                <Separator
+                    Grid.Row="7"
+                    Height="1"
+                    Margin="25,15,25,10"
+                    VerticalAlignment="Top"
+                    Background="Gray" />
 
-                <!-- Qualifications -->
+                <!--  Qualifications  -->
                 <Grid Grid.Row="7">
-                    <TextBlock Text="Kvalifikationer:" FontSize="18" FontWeight="SemiBold"
-               Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="18"
+                        FontWeight="SemiBold"
+                        Foreground="#FFFFFF"
+                        Text="Kvalifikationer:" />
 
 
                 </Grid>
 
-                <!-- Lead Qual -->
-                <Grid Grid.Row="8" Margin="0 20 0 10">
-                    <TextBlock Text="Lead sikret:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
-               Foreground="#FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <!--  Lead Qual  -->
+                <Grid Grid.Row="8" Margin="0,20,0,10">
+                    <TextBlock
+                        Margin="25,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        Foreground="#FFFFFF"
+                        Text="Lead sikret:" />
 
-                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <CheckBox HorizontalAlignment="Center">
-                        </CheckBox>
+                    <Grid
+                        Width="200"
+                        Margin="0,0,30,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                        <CheckBox HorizontalAlignment="Center" />
                     </Grid>
                 </Grid>
 
-                <!-- Top Qual -->
-                <Grid Grid.Row="9" Margin="0 20 0 50">
-                    <TextBlock Text="Top-reb:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
-               Foreground="#FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <!--  Top Qual  -->
+                <Grid Grid.Row="9" Margin="0,20,0,50">
+                    <TextBlock
+                        Margin="25,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        Foreground="#FFFFFF"
+                        Text="Top-reb:" />
 
-                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <CheckBox HorizontalAlignment="Center">
-                        </CheckBox>
+                    <Grid
+                        Width="200"
+                        Margin="0,0,30,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                        <CheckBox HorizontalAlignment="Center" />
                     </Grid>
                 </Grid>
 
@@ -182,115 +291,171 @@
         <!--#endregion-->
 
         <!--#region Customer membership section-->
-        <Border Grid.Column="1" Margin="20" CornerRadius="20" BorderThickness="1">
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#426AD8" Offset="0"/>
-                    <GradientStop Color="#DA34AE" Offset="0.75"/>
-                    <GradientStop Color="#8A16C1" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="#060531" Offset="0"/>
-                    <GradientStop Color="#1B1448" Offset="0.75"/>
-                </LinearGradientBrush>
-            </Border.Background>
+        <Border
+            Grid.Column="1"
+            Style="{StaticResource BorderGradientStyle}">
 
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
 
-                <!-- Page Title -->
-                <TextBlock Grid.Row="0" Text="Medlemskab" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 20" 
-                  HorizontalAlignment="Center" Foreground="White"/>
+                <!--  Page Title  -->
+                <TextBlock
+                    Grid.Row="0"
+                    Margin="0,20,0,20"
+                    HorizontalAlignment="Center"
+                    FontSize="32"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    Text="Medlemskab" />
 
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20*"/>
-                        <ColumnDefinition Width="60*"/>
-                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*" />
+                        <ColumnDefinition Width="60*" />
+                        <ColumnDefinition Width="20*" />
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30*" MinHeight="130"/>
-                        <RowDefinition Height="30*" MinHeight="130"/>
-                        <RowDefinition Height="30*" MinHeight="130"/>
-                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="30*" MinHeight="130" />
+                        <RowDefinition Height="30*" MinHeight="130" />
+                        <RowDefinition Height="30*" MinHeight="130" />
+                        <RowDefinition Height="10*" />
                     </Grid.RowDefinitions>
 
-                    <!-- Memberships -->
+                    <!--  Memberships  -->
 
-                    <!-- Year membership -->
-                    <Border x:Name="bb_YearMembership" Grid.Row="0" Grid.Column="1" BorderThickness="0,0,4,4" Height="130" MouseLeftButtonDown="BorderYear_MouseLeftButtonDown" CornerRadius="15">
+                    <!--  Year membership  -->
+                    <Border
+                        x:Name="bb_YearMembership"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Height="130"
+                        BorderThickness="0,0,4,4"
+                        CornerRadius="15"
+                        MouseLeftButtonDown="BorderYear_MouseLeftButtonDown">
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="Gray" Opacity="0.2"/>
+                            <SolidColorBrush Opacity="0.2" Color="Gray" />
                         </Border.BorderBrush>
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="Årskort" HorizontalAlignment="Center" FontSize="25" FontWeight="SemiBold"/>
-                            <TextBlock Text="4.000,-" HorizontalAlignment="Center" FontWeight="SemiBold"/>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="25"
+                                FontWeight="SemiBold"
+                                Text="Årskort" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontWeight="SemiBold"
+                                Text="4.000,-" />
                         </StackPanel>
 
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                                <GradientStop Color="#FFFF00" Offset="0.0"/>
-                                <GradientStop Color="#FFA500" Offset="1.2"/>
+                                <GradientStop Offset="0.0" Color="#FFFF00" />
+                                <GradientStop Offset="1.2" Color="#FFA500" />
                             </LinearGradientBrush>
                         </Border.Background>
+
+
 
                     </Border>
 
-                    <!-- Quater membership -->
-                    <Border x:Name="bb_QuaterMembership" Grid.Row="1" Grid.Column="1" BorderThickness="0,0,4,4" Height="130" MouseLeftButtonDown="BorderQuarter_MouseLeftButtonDown" CornerRadius="15">
+                    <!--  Quater membership  -->
+                    <Border
+                        x:Name="bb_QuaterMembership"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Height="130"
+                        BorderThickness="0,0,4,4"
+                        CornerRadius="15"
+                        MouseLeftButtonDown="BorderQuarter_MouseLeftButtonDown">
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="Gray" Opacity="0.2"/>
+                            <SolidColorBrush Opacity="0.2" Color="Gray" />
                         </Border.BorderBrush>
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="Kvartalskort" HorizontalAlignment="Center" FontSize="25" FontWeight="SemiBold"/>
-                            <TextBlock Text="1.200,-" HorizontalAlignment="Center" FontWeight="SemiBold"/>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="25"
+                                FontWeight="SemiBold"
+                                Text="Kvartalskort" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontWeight="SemiBold"
+                                Text="1.200,-" />
                         </StackPanel>
 
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                                <GradientStop Color="#2E8B57" Offset="0.0"/>
-                                <GradientStop Color="#ADEE2F" Offset="1"/>
+                                <GradientStop Offset="0.0" Color="#2E8B57" />
+                                <GradientStop Offset="1" Color="#ADEE2F" />
                             </LinearGradientBrush>
                         </Border.Background>
                     </Border>
 
-                    <!-- Month Membership -->
-                    <Border x:Name="bb_MonthMembership" Grid.Row="2" Grid.Column="1" BorderThickness="0,0,4,4" Height="130" MouseLeftButtonDown="BorderMonth_MouseLeftButtonDown" CornerRadius="15">
+                    <!--  Month Membership  -->
+                    <Border
+                        x:Name="bb_MonthMembership"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Height="130"
+                        BorderThickness="0,0,4,4"
+                        CornerRadius="15"
+                        MouseLeftButtonDown="BorderMonth_MouseLeftButtonDown">
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="Gray" Opacity="0.2"/>
+                            <SolidColorBrush Opacity="0.2" Color="Gray" />
                         </Border.BorderBrush>
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="Månedskort" HorizontalAlignment="Center" FontSize="25" FontWeight="SemiBold"/>
-                            <TextBlock Text="500,-" HorizontalAlignment="Center" FontWeight="SemiBold"/>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="25"
+                                FontWeight="SemiBold"
+                                Text="Månedskort" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontWeight="SemiBold"
+                                Text="500,-" />
                         </StackPanel>
 
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                                <GradientStop Color="#F08080" Offset="0.0"/>
-                                <GradientStop Color="#ADEE2F" Offset="1.2"/>
+                                <GradientStop Offset="0.0" Color="#F08080" />
+                                <GradientStop Offset="1.2" Color="#ADEE2F" />
                             </LinearGradientBrush>
                         </Border.Background>
+
+
                     </Border>
 
                 </Grid>
-                <!-- Start Date -->
+                <!--  Start Date  -->
                 <Grid Grid.Row="2">
-                    <TextBlock Text="Start dato:" FontSize="13" FontWeight="SemiBold" Margin="25 0 0 0"
-                              Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock
+                        Margin="25,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        Foreground="White"
+                        Text="Start dato:" />
 
-                    <Grid Width="200" Margin="0 0 30 0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
-                                  Panel.ZIndex="1" Text="dd/mm/åååå"
-                                  Visibility="{Binding ElementName=tb_TxtStartDate,Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
+                    <Grid
+                        Width="200"
+                        Margin="0,0,30,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                        <TextBlock
+                            Margin="15,0"
+                            VerticalAlignment="Center"
+                            Panel.ZIndex="1"
+                            Foreground="#b0b9c6"
+                            IsHitTestVisible="False"
+                            Text="dd/mm/åååå"
+                            Visibility="{Binding ElementName=tb_TxtStartDate, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
 
-                        <TextBox x:Name="tb_TxtStartDate" Style="{StaticResource tb_TextBoxInput}"/>
+                        <TextBox x:Name="tb_TxtStartDate" Style="{StaticResource tb_TextBoxInput}" />
                     </Grid>
                 </Grid>
             </Grid>
@@ -300,59 +465,71 @@
         <!--#endregion-->
 
 
-        <!--#region DataTable section -->
+        <!--#region DataTable section-->
         <Border
-                Grid.Column="2" Margin="20" CornerRadius="20" BorderThickness="1">
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#426AD8" Offset="0"/>
-                    <GradientStop Color="#DA34AE" Offset="0.75"/>
-                    <GradientStop Color="#8A16C1" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="#060531" Offset="0"/>
-                    <GradientStop Color="#1B1448" Offset="0.75"/>
-                </LinearGradientBrush>
-            </Border.Background>
+            Grid.Column="2"
+            Style="{StaticResource BorderGradientStyle}">
+            
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
 
-                <!-- Page Title -->
-                <TextBlock Grid.Row="0" Text="Personoplysninger" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 20" 
-                  HorizontalAlignment="Center" Foreground="White"/>
+                <!--  Page Title  -->
+                <TextBlock
+                    Grid.Row="0"
+                    Margin="0,20,0,20"
+                    HorizontalAlignment="Center"
+                    FontSize="32"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    Text="Personoplysninger" />
 
-                <!-- DataTable with person details -->
-                <DataGrid 
-                    x:Name="dg_CustomerInputSummary" Opacity="0.9" Grid.Row="1" MaxHeight="500" MaxWidth="800" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible"
-                    BorderBrush="gray" HorizontalAlignment="Center" VerticalAlignment="Top" Padding="0 30 10 0">
-                </DataGrid>
+                <!--  DataTable with person details  -->
+                <DataGrid
+                    x:Name="dg_CustomerInputSummary"
+                    Grid.Row="1"
+                    MaxWidth="800"
+                    MaxHeight="500"
+                    Padding="0,30,10,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    BorderBrush="gray"
+                    HorizontalScrollBarVisibility="Visible"
+                    Opacity="0.9"
+                    VerticalScrollBarVisibility="Visible" />
 
 
 
 
-                <!-- Page SubTitle -->
-                <TextBlock Grid.Row="2" Text="Medlemsoplysninger" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 20" 
-                  HorizontalAlignment="Center" Foreground="White"/>
+                <!--  Page SubTitle  -->
+                <TextBlock
+                    Grid.Row="2"
+                    Margin="0,20,0,20"
+                    HorizontalAlignment="Center"
+                    FontSize="32"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    Text="Medlemsoplysninger" />
 
-                <!-- DataTable with membership details -->
+                <!--  DataTable with membership details  -->
 
 
 
 
 
-                <!-- Add Member Button -->
-                <Button Grid.Row="4" Style="{StaticResource bt_AddButton}" Click="Button_Click">
+                <!--  Add Member Button  -->
+                <Button
+                    Grid.Row="4"
+                    Click="Button_Click"
+                    Style="{StaticResource bt_AddButton}">
                     <StackPanel Orientation="Horizontal">
-                        <Icon:PackIconMaterial Kind="AccountPlusOutline" Style="{StaticResource ic_MenuButtonIcon}"/>
-                        <TextBlock Text="Tilknyt medlemskab"/>
+                        <Icon:PackIconMaterial Kind="AccountPlusOutline" Style="{StaticResource ic_MenuButtonIcon}" />
+                        <TextBlock Text="Tilknyt medlemskab" />
                     </StackPanel>
                 </Button>
 

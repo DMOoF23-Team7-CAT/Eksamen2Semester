@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KlatreKongen.MVVM.Model.Base
+namespace KlatreKongen.Model.Base
 {
     public class Customer
     {

@@ -1,10 +1,10 @@
-using KlatreKongen.MVVM.Model.Base;
-using KlatreKongen.MVVM.Model.Repositories;
+using KlatreKongen.Model.Base;
+using KlatreKongen.Model.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
 
-namespace KlatreKongenTest1
+namespace KlatrKongenTest1
 {
     [TestClass]
     public class CustomerRepositoryTests

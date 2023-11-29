@@ -1,6 +1,6 @@
-﻿using KlatreKongen.Core;
-using KlatreKongen.MVVM.Model.Base;
-using KlatreKongen.MVVM.Model.Repositories;
+﻿using KlatreKongen.Model.Core;
+using KlatreKongen.Model.Base;
+using KlatreKongen.Model.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace KlatreKongen.MVVM.ViewModel
+namespace KlatreKongen.ViewModel
 {
     class OverviewViewModel : ObservableObject
     {
