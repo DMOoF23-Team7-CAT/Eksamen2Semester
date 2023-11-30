@@ -71,8 +71,8 @@ namespace KlatreKongen
                 if (IsMaximized)
                 {
                     this.WindowState = WindowState.Normal;
-                    this.Height = 720;
-                    this.Width = 1080;
+                    this.Height = 784;
+                    this.Width = 1366;
 
                     IsMaximized = false;
                 }
