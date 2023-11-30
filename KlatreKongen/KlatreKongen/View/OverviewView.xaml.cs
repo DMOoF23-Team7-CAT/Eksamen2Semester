@@ -24,6 +24,7 @@ namespace KlatreKongen.View
     /// </summary>
     public partial class OverviewView : UserControl
     {
+
         OverviewViewModel overviewVM;
         public OverviewView()
         {
@@ -46,7 +47,7 @@ namespace KlatreKongen.View
             }
         }
 
-        private void tb_SearchBox_GotFocus(object sender, RoutedEventArgs e)
+/*        private void tb_SearchBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
             tb.Text = string.Empty;
@@ -63,7 +64,7 @@ namespace KlatreKongen.View
                 box.Foreground = Brushes.White;
                 box.GotFocus += tb_SearchBox_GotFocus;
             }
-        }
+        }*/
 
         private void tb_SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -74,6 +75,14 @@ namespace KlatreKongen.View
                 dataView.RowFilter = $"CustomerName LIKE '%{tb_SearchBox.Text}%'";
             }
         }
+
+/*        private void dg_Overview_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dg_Overview.SelectedItem != null)
+            {
+                overviewVM.SelectedObject = dg_Overview.SelectedItem;
+            }
+        }*/
     }
 }
 
