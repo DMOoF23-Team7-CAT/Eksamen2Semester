@@ -14,36 +14,41 @@ namespace KlatreKongen.ViewModel
 {
     class OverviewViewModel : ObservableObject
     {
-        private readonly CustomerRepository _customerRepository;
-        private ObservableCollection<Customer> _customer { get; set; }
+        private readonly CustomerRepository _customerRepository;       
         private DataTable _dataTable { get; set; }
+        //private ObservableCollection<Customer> _customers { get; set; }
 
         public DataTable DataTable
         {
-
             get { return _dataTable; }
             set { _dataTable = value; }
-
-
-        }
-
-        public ObservableCollection<Customer> Customer
-        {
-            get { return _customer; }
-            set { _customer = value; }
         }
 
         public OverviewViewModel()
         {
             _customerRepository = new CustomerRepository();
-            _dataTable = _customerRepository.GetCustomersWithData();
-            //_customer = _customerRepository.CustomerList;
+            DataTable = _customerRepository.GetCustomersWithData();
         }
 
         public void RemoveCustomer(int customerid)
         {
             _customerRepository.DeleteCustomer(customerid);
         }
+
+        //public ObservableCollection<Customer> Customers
+        //{
+        //    get { return _customers; }
+        //    set { _customers = value; }
+        //}
+
+
+        //public void LoadDataGrid()
+        //{
+        //    _customerRepository.GetCustomersWithData();
+        //}
+
+
+
 
 
 

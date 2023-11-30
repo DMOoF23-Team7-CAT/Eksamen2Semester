@@ -1,9 +1,13 @@
 ﻿using KlatreKongen.Model.Base;
 using KlatreKongen.ViewModel;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +29,8 @@ namespace KlatreKongen.View
     public partial class OverviewView : UserControl
     {
         OverviewViewModel overviewVM;
+        
+       
         public OverviewView()
         {
             overviewVM = new OverviewViewModel();
@@ -39,31 +45,35 @@ namespace KlatreKongen.View
 
         private void bt_Delete_Click(object sender, RoutedEventArgs e)
         {
-            Customer selectedCustomer = dg_Overview.SelectedItem as Customer;
-            if (selectedCustomer != null)
-            {
-                overviewVM.RemoveCustomer(selectedCustomer.Id);
+            DataGrid dg = this.dg_Overview;
+
+            // Check if an item is selected in the DataGrid
+            if (dg.SelectedItem != null)
+            {                
+                var id = (DataRowView)dg.SelectedItem;
+                var PK_ID = Convert.ToInt32(id.Row["CustomerId"].ToString());
+
+                // With the customer ID, we can now delete the customer
+                overviewVM.RemoveCustomer(PK_ID);
             }
+            else
+            {
+                // Handle the case where no item is selected
+                MessageBox.Show("Please select a customer to delete.");
+            }
+
+            //Can't get it to refresh the DataGrid tho
+            dg_Overview.Items.Refresh();
+
         }
 
-        private void tb_SearchBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox tb = (TextBox)sender;
-            tb.Text = string.Empty;
-            tb.Foreground = Brushes.White;
-            tb.GotFocus -= tb_SearchBox_GotFocus;
-        }
 
-        private void tb_SearchBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox box = sender as TextBox;
-            if (box.Text.Trim().Equals(string.Empty))
-            {
-                box.Text = "Indtast navn...";
-                box.Foreground = Brushes.White;
-                box.GotFocus += tb_SearchBox_GotFocus;
-            }
-        }
+        //Customer selectedCustomer = dg_Overview.SelectedItem as Customer;
+        //if (selectedCustomer != null)
+        //{
+        //    overviewVM.RemoveCustomer(selectedCustomer.Id);
+        //}
+
 
         private void tb_SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {

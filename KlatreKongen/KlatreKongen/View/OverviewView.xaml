@@ -26,8 +26,8 @@
             Background="LightGray"
             CornerRadius="20">            
                 <DataGrid
-                        x:Name="dg_Overview" HorizontalAlignment="center" ItemsSource="{Binding DataTable}" SelectionMode="Single"
-                        AutoGenerateColumns="False" >
+                        x:Name="dg_Overview" HorizontalAlignment="center" ItemsSource="{Binding DataTable}"
+                        AutoGenerateColumns="False" CanUserAddRows="False"  >
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding CustomerId}" Width="30" Header="Id" />
                         <DataGridTextColumn Binding="{Binding CustomerName}" Width="100" Header="Navn" />
@@ -35,7 +35,7 @@
                         <DataGridTextColumn Binding="{Binding Phone}" Header="Telefon" />
                         <DataGridTextColumn Binding="{Binding Email}" Header="Email" />
                         <DataGridTextColumn Binding="{Binding Qualifications}" Header="Kvalifikationer" Width="110" />
-                        <DataGridTextColumn Binding="{Binding HasSignedDisclaimer}" Header="Fraskrivningserklæring" />
+                        <DataGridCheckBoxColumn Binding="{Binding HasSignedDisclaimer}" Header="Fraskrivningserklæring" />
                         <DataGridTextColumn Binding="{Binding MembershipId}" Width="100" Header="Medlemskabs Id" />
                         <DataGridTextColumn Binding="{Binding MembershipStartDate, StringFormat=dd/MM/yyyy}" Header="Start Dato" />
                         <DataGridTextColumn Binding="{Binding MembershipEndDate, StringFormat=dd/MM/yyyy}" Header="Slut Dato" />
@@ -90,7 +90,7 @@
                     <Rectangle StrokeThickness="1"/>
                     <TextBlock x:Name="tl_Search" Text="Søg" VerticalAlignment="Center"  FontSize="15" Foreground="White" Margin="0,0,10,0">
                     </TextBlock>
-                    <TextBox Margin="0,0,50,0" BorderThickness="1" FontSize="15" VerticalContentAlignment="Center" Background="Transparent" Padding="5" Width="200" Height="40" Foreground="White" Text="Indtast navn..." x:Name="tb_SearchBox" GotFocus="tb_SearchBox_GotFocus" LostFocus="tb_SearchBox_LostFocus" TextChanged="tb_SearchBox_TextChanged"  >
+                    <TextBox Margin="0,0,50,0" BorderThickness="1" FontSize="15" VerticalContentAlignment="Center" Background="Transparent" Padding="5" Width="200" Height="40" Foreground="White" Text="" x:Name="tb_SearchBox" TextChanged="tb_SearchBox_TextChanged"  >
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
