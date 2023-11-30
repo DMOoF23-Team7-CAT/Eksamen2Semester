@@ -1,4 +1,5 @@
-﻿using KlatreKongen.Model.Core;
+﻿using KlatreKongen.Model.Base;
+using KlatreKongen.Model.Core;
 using KlatreKongen.Model.Repositories;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,18 @@ namespace KlatreKongen.ViewModel
     {
         private readonly CustomerRepository _customerRepository;
         private DataTable customerMembershipTable;
+        private Customer _selectedCustomer;
+
+        public Customer SelectedCustomer
+        {
+            get { return _selectedCustomer; }
+            set 
+            {
+                _selectedCustomer = value;
+                OnPropertyChanged(nameof(SelectedCustomer));
+            }
+        }
+
 
         public DataTable CustomerMembershipTable
         {
@@ -29,6 +42,16 @@ namespace KlatreKongen.ViewModel
         {
             _customerRepository = new CustomerRepository();
             CustomerMembershipTable = _customerRepository.GetCustomerMemberships();
+        }
+
+        public Customer GetById(int id)
+        {
+            Customer customer = _customerRepository.GetCustomerById(id);
+            return customer;
+        }
+        public void CheckCustomerIn()
+        {
+
         }
     }
 }

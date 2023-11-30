@@ -60,6 +60,7 @@
 
                     <DataGrid.Columns>
                         <DataGridTextColumn
+                            x:Name="dgc_Id"
                             Width="30"
                             Binding="{Binding CustomerId}"
                             Header="Id" />

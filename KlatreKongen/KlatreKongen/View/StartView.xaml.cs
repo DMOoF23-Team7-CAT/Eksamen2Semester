@@ -1,4 +1,5 @@
-﻿using KlatreKongen.ViewModel;
+﻿using KlatreKongen.Model.Base;
+using KlatreKongen.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,6 +40,23 @@ namespace KlatreKongen.View
             {
                 dataView.RowFilter = $"CustomerName LIKE '%{tb_CheckIn.Text}%'";
             }
+        }
+
+        private void bt_CheckIn_Click(object sender, RoutedEventArgs e)
+        {
+            // Check if an item is selected
+            if (dg_CheckIn.SelectedItem != null)
+            {
+                // Assuming CustomerMembershipTable is a DataTable
+                DataRowView selectedRow = (DataRowView)dg_CheckIn.SelectedItem;
+
+                // Access the value of the "Id" column
+                int customerId = (int)selectedRow["CustomerId"];
+                
+                startVM.SelectedCustomer = startVM.GetById(customerId);
+
+            }
+
         }
 
     }
