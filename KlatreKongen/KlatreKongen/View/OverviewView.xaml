@@ -15,24 +15,43 @@
     </UserControl.DataContext>
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition Width="449" />
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
         <Border
-            Grid.Column="0"
+            Grid.Row="1"
             Margin="20"
             Background="LightGray"
-            CornerRadius="20">
-            <StackPanel>
+            CornerRadius="20">            
                 <DataGrid
-                    x:Name="dg_Overview"
-                    HorizontalAlignment="center"
-                    ItemsSource="{Binding Customer}" />
-            </StackPanel>
+                        x:Name="dg_Overview" HorizontalAlignment="center" ItemsSource="{Binding DataTable}" SelectionMode="Single"
+                        AutoGenerateColumns="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding CustomerId}" Width="30" Header="Id" />
+                        <DataGridTextColumn Binding="{Binding CustomerName}" Width="100" Header="Navn" />
+                        <DataGridTextColumn Binding="{Binding DateOfBirth, StringFormat=dd/MM/yyyy}" Header="Fødselsdag" />
+                        <DataGridTextColumn Binding="{Binding Phone}" Header="Telefon" />
+                        <DataGridTextColumn Binding="{Binding Email}" Header="Email" />
+                        <DataGridTextColumn Binding="{Binding Qualifications}" Header="Kvalifikationer" Width="110" />
+                        <DataGridTextColumn Binding="{Binding HasSignedDisclaimer}" Header="Fraskrivningserklæring" />
+                        <DataGridTextColumn Binding="{Binding MembershipId}" Width="100" Header="Medlemskabs Id" />
+                        <DataGridTextColumn Binding="{Binding MembershipStartDate, StringFormat=dd/MM/yyyy}" Header="Start Dato" />
+                        <DataGridTextColumn Binding="{Binding MembershipEndDate, StringFormat=dd/MM/yyyy}" Header="Slut Dato" />
+                        <DataGridTextColumn Binding="{Binding MembershipDiscount}" Header="Rabat" />
+                        <DataGridTextColumn Binding="{Binding MembershipBenefits}" Header="Fordele" />
+                        <DataGridTextColumn Binding="{Binding MembershipEntryId}" Header="Indgangs Id" />
+                        <DataGridTextColumn Binding="{Binding MembershipCheckInTime}" Header="Indtjekning" />
+                        <DataGridTextColumn Binding="{Binding MembershipEntryPrice}" Header="Billetpris for medlem" />
+                        <DataGridTextColumn Binding="{Binding EntryPassId}" Header="Billet Id" />
+                        <DataGridTextColumn Binding="{Binding EntryPassName}" Header="Billet type" />
+                        <DataGridTextColumn Binding="{Binding EntryPassPrice}" Header="Billet type pris" />
+                        <DataGridTextColumn Binding="{Binding EntryPassEntryId}" Header="Indgang billet indgangs Id"/>
+                    </DataGrid.Columns>
+                </DataGrid>            
         </Border>
-        <Border
-            Grid.Column="1"
+        <Border Grid.Row="0"            
             Margin="20"
             BorderThickness="1"
             CornerRadius="10"
@@ -59,147 +78,26 @@
 
                 <!--  Grid Row 0  -->
 
-                <StackPanel Grid.Row="0">
-                    <DockPanel>
-                        <TextBlock
-                            Margin="0,20,0,20"
-                            HorizontalAlignment="Center"
-                            FontSize="20"
-                            FontWeight="Bold"
-                            Foreground="White"
-                            Text="Kundeoplysninger" />
-                    </DockPanel>
-                    <DockPanel Margin="20,0,0,3">
-                        <TextBlock
-                            DockPanel.Dock="Left"
-                            FontSize="15"
-                            FontWeight="DemiBold"
-                            Foreground="White"
-                            Text="Navn" />
-                        <TextBox
-                            x:Name="tb_Name"
-                            Width="230"
-                            Margin="0,0,30,0"
-                            HorizontalAlignment="Right"
-                            Background="Transparent"
-                            BorderBrush="DarkGray"
-                            BorderThickness="0,0,0,1"
-                            CaretBrush="LightGray"
-                            FontSize="15"
-                            Foreground="White" />
-                    </DockPanel>
-                    <DockPanel Margin="20,10,0,3">
-                        <TextBlock
-                            DockPanel.Dock="Left"
-                            FontSize="15"
-                            FontWeight="DemiBold"
-                            Foreground="White"
-                            Text="Fødselsdato" />
-                        <TextBox
-                            x:Name="tb_DOB"
-                            Width="230"
-                            Margin="0,0,30,0"
-                            HorizontalAlignment="Right"
-                            Background="Transparent"
-                            BorderBrush="DarkGray"
-                            BorderThickness="0,0,0,1"
-                            CaretBrush="LightGray"
-                            FontSize="15"
-                            Foreground="White" />
-                    </DockPanel>
-                    <DockPanel Margin="20,10,0,3">
-                        <TextBlock
-                            DockPanel.Dock="Left"
-                            FontSize="15"
-                            FontWeight="DemiBold"
-                            Foreground="White"
-                            Text="Telefonnummer" />
-                        <TextBox
-                            x:Name="tb_Phone"
-                            Width="230"
-                            Margin="0,0,30,0"
-                            HorizontalAlignment="Right"
-                            Background="Transparent"
-                            BorderBrush="DarkGray"
-                            BorderThickness="0,0,0,1"
-                            CaretBrush="LightGray"
-                            FontSize="15"
-                            Foreground="White" />
-                    </DockPanel>
-                    <DockPanel Margin="20,10,0,3">
-                        <TextBlock
-                            DockPanel.Dock="Left"
-                            FontSize="15"
-                            FontWeight="DemiBold"
-                            Foreground="White"
-                            Text="Email" />
-                        <TextBox
-                            x:Name="tb_Email"
-                            Width="230"
-                            Margin="0,0,30,0"
-                            HorizontalAlignment="Right"
-                            Background="Transparent"
-                            BorderBrush="DarkGray"
-                            BorderThickness="0,0,0,1"
-                            CaretBrush="LightGray"
-                            FontSize="15"
-                            Foreground="White" />
-                    </DockPanel>
-                    <DockPanel Margin="20,10,0,3">
-                        <TextBlock
-                            DockPanel.Dock="Left"
-                            FontSize="15"
-                            FontWeight="DemiBold"
-                            Foreground="White"
-                            Text="Kvalifikationer" />
-                        <TextBox
-                            x:Name="tb_Qualifications"
-                            Width="230"
-                            Margin="0,0,30,0"
-                            HorizontalAlignment="Right"
-                            Background="Transparent"
-                            BorderBrush="DarkGray"
-                            BorderThickness="0,0,0,1"
-                            CaretBrush="LightGray"
-                            FontSize="15"
-                            Foreground="White" />
-                    </DockPanel>
-                    <DockPanel Margin="20,10,0,3">
-                        <TextBlock
-                            DockPanel.Dock="Left"
-                            FontSize="15"
-                            FontWeight="DemiBold"
-                            Foreground="White"
-                            Text="Fraskrivningserklæring signeret?" />
-                        <StackPanel
-                            Margin="0,0,30,0"
-                            HorizontalAlignment="Right"
-                            Orientation="Horizontal">
-                            <TextBlock
-                                Margin="0,0,5,0"
-                                FontSize="15"
-                                Foreground="White"
-                                Text="Ja" />
-                            <RadioButton
-                                x:Name="rb_Signed"
-                                Margin="0,3,5,0"
-                                IsChecked="True" />
-                            <TextBlock
-                                Margin="0,0,5,0"
-                                FontSize="15"
-                                Foreground="White"
-                                Text="Nej" />
-                            <RadioButton Margin="3" IsChecked="False" />
-                        </StackPanel>
-                    </DockPanel>
-                </StackPanel>
+               
 
                 <!--  Buttons for Update and Delete  -->
 
                 <StackPanel
                     Grid.Row="2"
                     HorizontalAlignment="Center"
-                    Orientation="Horizontal">
+                    Orientation="Horizontal" Height="70" Margin="0,0,0,10" >
+
+                    <Rectangle StrokeThickness="1"/>
+                    <TextBlock x:Name="tl_Search" Text="Søg" VerticalAlignment="Center"  FontSize="15" Foreground="White" Margin="0,0,10,0">
+                    </TextBlock>
+                    <TextBox Margin="0,0,50,0" BorderThickness="1" FontSize="15" VerticalContentAlignment="Center" Background="Transparent" Padding="5" Width="200" Height="40" Foreground="White" Text="Indtast navn..." x:Name="tb_SearchBox" GotFocus="tb_SearchBox_GotFocus" LostFocus="tb_SearchBox_LostFocus" TextChanged="tb_SearchBox_TextChanged"  >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
                     <Button
                         x:Name="bt_Update"
                         Margin="0,0,20,0"
@@ -267,10 +165,7 @@
                         </Button.Template>
                     </Button>
                 </StackPanel>
-
             </Grid>
-
         </Border>
-
     </Grid>
 </UserControl>
