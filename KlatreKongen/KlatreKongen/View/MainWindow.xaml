@@ -45,35 +45,15 @@
             </Grid.RowDefinitions>
 
             <!--#region Controlbar-->
-            <StackPanel
-                Grid.Row="0"
-                HorizontalAlignment="Right"
-                Orientation="Horizontal">
-                <!--    -->
-                <Button
-                    x:Name="btn_Minimize"
-                    Width="26"
-                    Height="26"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Click="btn_Minimize_Click"
-                    Content="⨀" />
-                <Button
-                    x:Name="btn_Maximize"
-                    Width="26"
-                    Height="26"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Click="btn_Maximize_Click"
-                    Content="⨁" />
-                <Button
-                    x:Name="btn_Close"
-                    Width="26"
-                    Height="26"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Click="btn_Close_Click"
-                    Content="⨂" />
+
+            <Border BorderThickness="0,0,0,1" BorderBrush="#22202f"/>
+            <StackPanel>
+                <TextBlock Text="KlatreKongen" Foreground="Gray" Margin="20 5 0 0" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Style="{StaticResource bt_ControlbarButton}" Click="btn_Minimize_Click" Content="⨀" />
+                <Button Style="{StaticResource bt_ControlbarButton}" Click="btn_Maximize_Click" Content="⨁" />
+                <Button Style="{StaticResource bt_ControlbarButton}" Click="btn_Close_Click" Content="⨂" />
             </StackPanel>
             <!--#endregion-->
 

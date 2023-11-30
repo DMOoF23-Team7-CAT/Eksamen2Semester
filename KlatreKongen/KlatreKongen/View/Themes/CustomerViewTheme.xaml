@@ -83,7 +83,69 @@
         <Setter Property="Margin" Value="20,2,20,0" />
     </Style>
 
+    <Style x:Key="tb_PersonDetailsTextBlock" TargetType="TextBlock">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
 
+    <Style x:Key="tk_CustermerViewHeaders" TargetType="TextBlock">
+        <Setter Property="Margin" Value="0,20,0,20"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="32"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style x:Key="bb_MembershipBorder" TargetType="Border">
+        <Setter Property="Grid.Column" Value="1" />
+        <Setter Property="MinHeight" Value="110" />
+        <Setter Property="BorderThickness" Value="0,0,4,4" />
+        <Setter Property="CornerRadius" Value="15" />
+        <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="Margin" Value="0 10"/>
+    </Style>
+
+    <Style x:Key="tb_CustomerQualAndDisclaimer" TargetType="TextBlock">
+        <Setter Property="Margin" Value="25,0,0,0" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="#FFFFFF" />
+    </Style>
+
+    <Style x:Key="gr_CustomerQualAndDisclaimer" TargetType="Grid">
+        <Setter Property="Width" Value="200" />
+        <Setter Property="Margin" Value="0,0,30,0" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="gr_CustomerDetailsHeadersGrid" TargetType="Grid">
+        <Setter Property="Width" Value="200" />
+        <Setter Property="Margin" Value="0,0,30,0" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="tk_CustomerDetailsTextBlocks" TargetType="TextBlock">
+        <Setter Property="Margin" Value="15,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Panel.ZIndex" Value="1" />
+        <Setter Property="Foreground" Value="#b0b9c6" />
+        <Setter Property="IsHitTestVisible" Value="False" />
+    </Style>
+
+    <Style x:Key="tk_CustomerDetailsHeadersText" TargetType="TextBlock">
+        <Setter Property="Margin" Value="25,0,0,0" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
 
 
 </ResourceDictionary>

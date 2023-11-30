@@ -14,7 +14,7 @@ namespace KlatreKongen.Model.Core
 
         public void OnPropertyChanged([CallerMemberName] string name = null)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
