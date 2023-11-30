@@ -1,23 +1,8 @@
 ﻿using KlatreKongen.ViewModel;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace KlatreKongen.View
 {
@@ -26,12 +11,12 @@ namespace KlatreKongen.View
     /// </summary>
     public partial class CustomerView : UserControl
     {
-        private CustomerViewModel customerVM;
+        private CustomerViewModel customerVM = new CustomerViewModel();
+
         public CustomerView()
         {
-            customerVM = new CustomerViewModel();
+            DataContext = customerVM;
             InitializeComponent();
-            LoadGrid();
         }
 
         private void BorderYear_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -103,31 +88,6 @@ namespace KlatreKongen.View
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Button Clicked!");
-        }
 
-
-        //-----------------------------------------------------------------------TEST-----------------------------------------------------------------------------
-        public async Task LoadGrid()
-        {
-            IConfigurationRoot config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            string? ConnectionString = config.GetConnectionString("MyDBConnection");
-
-
-            DataTable dt = new DataTable();
-            using (SqlConnection con = new SqlConnection(ConnectionString))
-            {
-                SqlCommand cmd = new SqlCommand("select * from Membership", con);
-
-                con.Open();
-
-                SqlDataReader sdr = cmd.ExecuteReader();
-                await Task.Run(() => dt.Load(sdr));
-            }
-            dg_CustomerInputSummary.ItemsSource = dt.DefaultView;
-
-        }
     }
 }
